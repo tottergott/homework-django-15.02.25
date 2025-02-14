@@ -59,20 +59,7 @@ class Post(models.Model):
 
 
 
-class Donate(models.Model):
-    title = models.CharField(
-        verbose_name='название',
-        max_length=255,
-    )
-    content = models.TextField(
-        verbose_name='URL',
-        blank=True,
-    )
-    picture = models.ImageField(
-        verbose_name='картинка',
-        blank=True,
-    )
-   
+
 
 class Comments(models.Model):
     category = models.ForeignKey(
@@ -110,5 +97,4 @@ class Likes(models.Model):
     )
     reaction = models.BooleanField(
         verbose_name='реакция',
-        max_length=255,
     )

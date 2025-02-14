@@ -23,3 +23,4 @@ class LikesAdmin(admin.ModelAdmin):
 @admin.register(Comments)
 class CommentsAdmin(admin.ModelAdmin):
     ...
+
