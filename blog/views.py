@@ -6,9 +6,11 @@ from blog.models import Category, Post
 
 def index(request):
     posts = Post.objects.all()
+    categories = Category.objects.all()
 
     context = {
         'posts': posts,
+        'categories': categories,
     }
 
     return render(
@@ -18,9 +20,9 @@ def index(request):
     )
 
 
-def get_post(request, slug):
+def get_post(request, post_slug):
     post = Post.objects.filter(
-        slug=slug,
+        slug=post_slug,
     ).first()
 
     context = {
@@ -30,5 +32,21 @@ def get_post(request, slug):
     return render(
         request,
         'post.html',
+        context
+    )
+
+def get_category(request, category_slug):
+    category = Category.objects.filter(
+        slug=category_slug,
+    ).first()
+    posts = Post.objects.filter(category=category)
+   
+    context = {
+        'category': category, 'posts': posts,
+    }
+
+    return render(
+        request,
+        'category.html',
         context
     )
